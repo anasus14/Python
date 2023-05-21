@@ -21,13 +21,12 @@ print("Trozo de la tupla", Grupo_2[0:3])
 
 #Como puedo modificar una tupla?
 Grupo1 = list(Grupo1)
-print ("La tupla es de tipo:" type(Grupo1),"\n")
 #SETS conjuntos
 Conjunto_vacio= set()
 Conjunto_vacio1={} #diccionario o set?
 print(type(Conjunto_vacio1))
 conjunto_valores= set({"azul", "Rojo", "Verde"}) #utilizando la funcion set
-conjunto_animales= set {"gatos", "perro", "loro"} #Utilizando llaves
+conjunto_animales= set ("gatos", "perro", "loro") #Utilizando llaves
 print("el primer set contiene los siguientes colores:", conjunto_valores)
 print("el set contiene los siguientes elementos", conjunto_animales)
 print(conjunto_animales[0]) #accediendo al primer elemento, pero no se puede consultar posicion al igual que en tupla.

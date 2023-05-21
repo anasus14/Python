@@ -13,7 +13,7 @@ print ("Mi IMC es:{:.2F}". format (imc), "\n")
 
 #se puede imprimir con " " """" y 
 asignatura = 'programacion'
-carrera = "Ingenieria Civil Informativa"
+carrera = "Ingenieria Civil Informatica"
 print ("la asignatura de", asignatura, "corresponde a la carrera de", carrera)
 print ("la cantidad de caracteres de la palabra", asignatura, "es de:", len(asignatura))
 #Len cuenta los caracteres
