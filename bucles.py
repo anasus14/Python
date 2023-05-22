@@ -43,4 +43,16 @@ while True:
         break
     else:
         print(parametro)
-        
+
+print("02 FOR")
+print("impresion de una lista de 10 elementos")
+print("FOR n°1")
+for i in (1,2,3,4,5,6,7,8,9,10):
+    print(i)
+print("FOR n°2")
+newlista= [1,2,3,4,5,6,7,8,9,10]
+for i in newlista:
+     print(i)
+print("For 3")
+for i in range (1,11):
+    print(i)
