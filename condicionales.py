@@ -10,6 +10,7 @@ else:
     print("Eres menor de edad\n")
 
 edad = 66
+
 if edad >= 18 and edad < 65:
     print("Eres mayor de edad")
 elif edad >= 65:
@@ -20,7 +21,7 @@ else:
 edad = 19
 print("Usted puede votar"if edad >= 18 else "Usted no puede votar")
 
-print("### BUCLES <CUIDADO CON LOS BUCLES INFINITOS NICOLÁS!!!> ###")
+print("### BUCLES <CUIDADO CON LOS BUCLES INFINITOS !!!> ###")
 #While <Mientras>
 num = 0
 while num <= 100:
