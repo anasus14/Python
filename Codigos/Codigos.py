@@ -19,4 +19,9 @@ print(sorted(lista1))#ordena la lista de forma descendente.
 len() #cuenta los elementos de la lista
 ".count" #Cuenta cuantas veces se repite el elemento
 lista1.pop()#elimina el elemento de la posicion
+#def funcion(frase): Definiendo una funcion.
+Dicccionario ={} #Crea un diccionario
+#frase.split()= divide la frase
+for i in Dicccionario: 
+    print(i) #linea 26 y 27 recorren el diccionario elemento por elemento
 
