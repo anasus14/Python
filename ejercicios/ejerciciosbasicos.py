@@ -4,6 +4,9 @@ def ingresar_identificacion():
 
 def ingresar_contrasena():
     contrasena = input("Ingrese su contraseña de 4 dígitos: ")
+    while len(contrasena) != 4:
+        print("La contraseña debe tener exactamente 4 dígitos.")
+        contrasena = input("Ingrese su contraseña de 4 dígitos: ")
     return contrasena
 
 def consultar_saldo(saldo):
@@ -58,5 +61,5 @@ if identificacion == identificacion_correcta and contrasena == contrasena_correc
             print("Gracias por utilizar el cajero.")
         else:
             print("Opción inválida. Por favor, seleccione nuevamente.")
-else:
-    print("Identificación o contraseña incorrecta. Inicio de sesión fallido.")
+    else:
+     print("Identificación o contraseña incorrecta. Inicio de sesión fallido.")
