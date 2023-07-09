@@ -24,4 +24,5 @@ Dicccionario ={} #Crea un diccionario
 #frase.split()= divide la frase
 for i in Dicccionario: 
     print(i) #linea 26 y 27 recorren el diccionario elemento por elemento
-
+#elif= se utiliza if cuando la condicion es verdadera, elif en la segunda condicion cuando
+#la 
