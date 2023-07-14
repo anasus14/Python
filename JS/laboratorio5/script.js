@@ -1,50 +1,68 @@
 function calcularDiferencia() {
-    var date1String = document.getElementById('date1').value;
-    var date2String = document.getElementById('date2').value;
-  
-    var date1 = parseDate(date1String);
-    var date2 = parseDate(date2String);
-  
-    if (date1 && date2) {
-      var diff = date2.getTime() - date1.getTime();
-  
-      if (diff >= 0) {
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        var months = Math.floor(days / 30.436875); // Average number of days in a month
-        var years = Math.floor(months / 12);
-  
-        days = days % 30.436875; // Remaining days after calculating months
-        months = months % 12; // Remaining months after calculating years
-  
-        var resultado = years + ' años, ' + months + ' meses, ' + days + ' días.';
-        document.getElementById('resultado').textContent = resultado;
-      } else {
-        document.getElementById('resultado').textContent = 'La segunda fecha debe ser posterior a la primera fecha.';
-      }
-    } else {
-      document.getElementById('resultado').textContent = 'Ingrese fechas válidas en el formato dd/mm/yyyy.';
-    }
+  var fecha1 = obtenerFecha(document.getElementById("fecha1").value);
+  var fecha2 = obtenerFecha(document.getElementById("fecha2").value);
+
+  // Verificar que las fechas sean válidas
+  if (!fecha1 || !fecha2) {
+    alert("Por favor, ingrese fechas válidas en formato dd/mm/yyyy.");
+    return;
   }
-  
-  function parseDate(dateString) {
-    var parts = dateString.split('/');
-    var day = parseInt(parts[0], 10);
-    var month = parseInt(parts[1], 10) - 1; // Months are zero-based
-    var year = parseInt(parts[2], 10);
-  
-    if (isValidDate(day, month, year)) {
-      return new Date(year, month, day);
-    } else {
-      return null;
-    }
+
+  // Verificar que la fecha 2 sea mayor o igual que la fecha 1
+  if (fecha2 < fecha1) {
+    alert("La fecha 2 debe ser mayor o igual que la fecha 1.");
+    return;
   }
-  
-  function isValidDate(day, month, year) {
-    var date = new Date(year, month, day);
-    return (
-      date.getFullYear() === year &&
-      date.getMonth() === month &&
-      date.getDate() === day
-    );
+
+  // Calcular la diferencia en días, meses y años
+  var diferencia = fecha2 - fecha1;
+
+  var unDia = 1000 * 60 * 60 * 24;
+  var años = Math.floor(diferencia / (unDia * 365));
+  var meses = calcularMesesTranscurridos(fecha1, fecha2);
+  var días = Math.floor(diferencia / unDia);
+
+  // Mostrar el resultado
+  document.getElementById("resultado").innerHTML = "Días: " + días + ", Meses: " + meses + ", Años: " + años;
+}
+
+function obtenerFecha(fechaString) {
+  var partes = fechaString.split('/');
+  if (partes.length !== 3) {
+    return null;
   }
-  
+  var día = parseInt(partes[0], 10);
+  var mes = parseInt(partes[1], 10) - 1; // Restar 1 porque los meses en JavaScript son base 0
+  var año = parseInt(partes[2], 10);
+
+  // Verificar que el año esté dentro del rango de 1900 a 2099
+  if (año < 1900 || año > 2099) {
+    return null;
+  }
+
+  return new Date(año, mes, día);
+}
+
+function calcularMesesTranscurridos(fecha1, fecha2) {
+  var meses = (fecha2.getFullYear() - fecha1.getFullYear()) * 12;
+  meses -= fecha1.getMonth();
+  meses += fecha2.getMonth();
+
+  // Si la fecha2 tiene un día menor que la fecha1, restamos un mes
+  if (fecha2.getDate() < fecha1.getDate()) {
+    meses--;
+  }
+
+  return meses;
+}
+function agregarSeparadores(inputId) {
+  var input = document.getElementById(inputId);
+  var fecha = input.value;
+  var separador = "/";
+
+  if (fecha.length === 2 || fecha.length === 5) {
+    fecha += separador;
+  }
+
+  input.value = fecha;
+}
